@@ -1,0 +1,54 @@
+{
+  "name": "mern-frontent",
+  "version": "1.0.0",
+  "author": "Diego Marafetti <dmarafetti@gmail.com>",
+  "sideEffects": [
+      "*.scss"
+  ],
+  "main": "dist/mern-frontend-app.js",
+  "typings": "dist/mern-frontend-app.d.ts",
+  "types": "dist/mern-frontend-app.d.ts",
+  "babel" : {
+    "presets" : ["@babel/preset-env", "@babel/preset-react", "@babel/preset-flow"],
+    "plugins" : ["@babel/plugin-proposal-class-properties"],
+    "comments": false
+  },
+  "scripts": {
+    "watch": "clear; webpack --config webpack.config.js --progress --stats normal --watch --env development",
+    "server": "clear; webpack serve --devtool source-map --env mode=${UI_BUILD_MODE} --env port=${UI_DOCKER_PORT}",
+    "analyze": "clear; webpack --env development --env analyze --env production",
+    "build": "clear; webpack --config webpack.config.js --progress --stats normal --env mode=production --env port=${UI_DOCKER_PORT}",
+    "dist": "clear; webpack --config webpack.config.js --env production"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.16.0",
+    "react-i18next": "13.2.2",
+    "axios": "1.5.1",
+    "change-case": "5.4.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-react": "^7.23.3",
+    "babel-loader": "^9.1.3",
+    "typescript": "^5.3.3",
+    "ts-loader": "9.5.1",
+    "@types/react": "^18.2.58",
+    "@types/react-dom": "^18.2.19",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.2",
+    "webpack-bundle-analyzer": "^4.10.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.10.0",
+    "css-minimizer-webpack-plugin": "^6.0.0",
+    "html-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^2.8.0",
+    "sass": "^1.71.1",
+    "sass-loader": "^14.1.1",
+    "style-loader": "^3.3.4",
+    "bootstrap": "5.3.3"
+  }
+}

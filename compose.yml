@@ -1,0 +1,46 @@
+version: '3.1'
+
+services:
+
+  frontend:
+    image: mern-frontend
+    env_file:
+      - ./.env
+    depends_on: [backend, db]
+    ports:
+      - "${UI_LOCAL_PORT}:${UI_DOCKER_PORT}"
+    networks:
+      - mern-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: mern-backend
+    env_file:
+      - ./.env
+    depends_on: [db]
+    ports:
+      - "${NODE_LOCAL_PORT}:${NODE_DOCKER_PORT}"
+    networks:
+      - mern-network
+
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - "${MONGODB_LOCAL_PORT}:${MONGODB_DOCKER_PORT}"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
+    command: --quiet
+    volumes:
+      - ./database:/data/db
+    networks:
+      - mern-network
+
+networks:
+
+  mern-network:
+
+    driver: bridge
