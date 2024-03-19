@@ -56,16 +56,18 @@ module.exports = env => {
                 },
                 {
                     test: /\.css$/,
-                    use: [{loader:  MiniCssExtractPlugin.loader}, 'css-loader']
-                },
-                {
-                    test: /\.scss/,
-                    use: [{loader:  MiniCssExtractPlugin.loader}, 'css-loader', 'sass-loader']
+                    use: [{loader:  MiniCssExtractPlugin.loader}, 'css-loader', 'postcss-loader']
                 }
             ]
         },
 
         plugins: [
+
+            new CleanWebpackPlugin({
+                verbose: true,
+                dry: true,
+                cleanStaleWebpackAssets: false
+            }),
 
             new MiniCssExtractPlugin({
                 filename: '[name].css',

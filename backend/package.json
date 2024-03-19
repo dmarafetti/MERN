@@ -5,7 +5,7 @@
   "author": "Diego Marafetti <dmarafetti@gmail.com>",
   "private": true,
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon --signal SIGHUP src/index.js"
   },
   "dependencies": {
     "express": "4.18.2",

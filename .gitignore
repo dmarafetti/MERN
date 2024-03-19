@@ -1,2 +1,3 @@
 /.idea
 /frontend/dist
+/frontend/package-lock.json

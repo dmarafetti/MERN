@@ -1,32 +1,35 @@
 const express = require('express')
+const User = require('../../../models/user');
 
 const router = express.Router();
 
 
-let clients = [
-
-    {id: 1, nombre: 'Juan', document: '12345'},
-    {id: 2, nombre: 'Agustin', document: '435324'},
-    {id: 3, nombre: 'Catalina', document: '3333333'},
-    {id: 4, nombre: 'Fabian', document: '66666'},
-    {id: 5, nombre: 'Clara', document: '88888'}
-
-];
 
 
+router.get('/', async (request, response) => {
 
-router.get('/', (request, response) => {
+    let users = await User.find({}).exec();
 
-    response.json(clients);
+    response.json(users);
+
+});
+
+router.get('/:id', async (request, response) => {
+
+    let users = await User.findById(request.params.id).exec();
+
+    response.json(users);
 
 });
 
 
-router.post('/', (request, response) => {
+router.post('/', async (request, response) => {
 
-    clients.push(request.body);
+    let theUser = new User(request.body);
 
-    response.status(201).send(request.body);
+    theUser = await theUser.save();
+
+    response.status(201).send(theUser);
 
 });
 
@@ -39,10 +42,6 @@ router.patch('/:id', (request, response) => {
 
 
 router.delete('/:id', (request, response) => {
-
-    const idClient = request.params.id;
-
-    clients = clients.filter(cliente => (cliente.id != idClient));
 
     response.status(204).end();
 

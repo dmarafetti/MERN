@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Diego Marafetti <dmarafetti@gmail.com>",
   "sideEffects": [
-      "*.scss"
+      "*.css"
   ],
   "main": "dist/mern-frontend-app.js",
   "typings": "dist/mern-frontend-app.d.ts",
@@ -18,7 +18,8 @@
     "server": "clear; webpack serve --devtool source-map --env mode=${UI_BUILD_MODE} --env port=${UI_DOCKER_PORT}",
     "analyze": "clear; webpack --env development --env analyze --env production",
     "build": "clear; webpack --config webpack.config.js --progress --stats normal --env mode=production --env port=${UI_DOCKER_PORT}",
-    "dist": "clear; webpack --config webpack.config.js --env production"
+    "dist": "clear; webpack --config webpack.config.js --env production",
+    "tailwind-init" : "tailwindcss init"
   },
   "dependencies": {
     "react": "18.2.0",
@@ -46,9 +47,10 @@
     "css-minimizer-webpack-plugin": "^6.0.0",
     "html-loader": "^5.0.0",
     "mini-css-extract-plugin": "^2.8.0",
-    "sass": "^1.71.1",
-    "sass-loader": "^14.1.1",
     "style-loader": "^3.3.4",
-    "bootstrap": "5.3.3"
+    "tailwindcss": "^3.4.1",
+    "postcss" : "^8.4.36",
+    "postcss-loader" : "^8.1.1",
+    "autoprefixer": "^10.4.18"
   }
 }
