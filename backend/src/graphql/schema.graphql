@@ -1,0 +1,45 @@
+scalar Date
+
+type Query {
+    me: User!
+    projects(name: String): [Project!]!
+    users(query: String): [User!]!
+}
+
+type Mutation {
+    createUser(data: CreateUserInput): User!
+    createProject(title: String!, author: ID): Project!
+}
+
+input CreateUserInput {
+    name: String!
+    email: String!
+    age: Int
+}
+
+type User {
+    id: ID!
+    name: String!
+    lastname: String!
+    jobTitle: String!
+    country: String!
+    city: String!
+    avatar: String!
+    createdAt: Date!
+    updatedAt: Date!
+    projects: [Project!]!
+}
+
+type Project {
+    id: ID!
+    name: String!
+    description: String!
+    technology: String!
+    price: Float!
+    owner: User!
+}
+
+type Subscription {
+
+    count: Int!
+}

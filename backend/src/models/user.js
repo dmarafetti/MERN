@@ -5,12 +5,17 @@ const userSchema = new mongoose.Schema({
 
     name: String,
     lastname: String,
-    createAt: Date,
     jobTitle: String,
     country: String,
     city: String,
-    projects: [Project.schema]
+    avatar: String,
+    createdAt: Date,
+    updatedAt: Date
+    //projects: [Project.schema]
 
+}, {
+
+    timestamps: true
 });
 
 module.exports = mongoose.model('User', userSchema);

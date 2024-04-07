@@ -1,7 +1,10 @@
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
+const { createHandler } = require("graphql-http/lib/use/express");
+const {buildGraphQLSchema} = require('./graphql');
 const apiRoutes = require('./routes');
+const {ruruHTML} = require("ruru/server");
 
 
 const {
@@ -32,6 +35,16 @@ const {
 
     });
 
+
+    // GraphQL routing
+
+    app.all('/graphql', createHandler({schema: buildGraphQLSchema()}))
+
+    // Serve the GraphiQL IDE.
+    app.get("/playground", (_req, res) => {
+      res.type("html")
+      res.end(ruruHTML({ endpoint: "/graphql" }))
+    })
 
     // API routing
 
