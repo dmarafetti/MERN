@@ -43,9 +43,10 @@ const {
     let mongo_user = MONGODB_USER || 'root',
         mongo_pass = MONGODB_PASSWORD || 'toor',
         mongo_host = MONGODB_DOCKER_HOST || 'localhost',
-        mongo_port = MONGODB_DOCKER_PORT || '27017';
+        mongo_port = MONGODB_DOCKER_PORT || '27017',
+        mongo_db = MONGODB_DATABASE || 'mern';
 
-    await mongoose.connect(`mongodb://${mongo_user}:${mongo_pass}@${mongo_host}:${mongo_port}/${MONGODB_DATABASE}?authSource=admin`)
+    await mongoose.connect(`mongodb://${mongo_user}:${mongo_pass}@${mongo_host}:${mongo_port}/${mongo_db}?authSource=admin`)
 
 
 

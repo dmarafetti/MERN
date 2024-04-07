@@ -13,5 +13,6 @@ $ docker pull mongo:latest
 $ docker run -d -p 27017:27017 --name=mongo-standalone \
         -e MONGO_INITDB_ROOT_USERNAME=root \
         -e MONGO_INITDB_ROOT_PASSWORD=toor \
+        -v $(pwd)/database:/data/db
         mongo:latest
 ```
