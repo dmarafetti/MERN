@@ -1,9 +1,11 @@
 import './css/styles.css';
-import React, {StrictMode} from 'react';
+import React from 'react';
 import {bootstrap} from './app/commons/react';
 import {createRoot} from 'react-dom/client';
 import axios from "axios";
 import App from './app';
+import {ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client";
+import {httpLink} from './app/commons/apollo';
 
 
 bootstrap('mern-frontend-app', {attrs: []}, (node, applicationParams, env) => {
@@ -16,6 +18,15 @@ bootstrap('mern-frontend-app', {attrs: []}, (node, applicationParams, env) => {
     axios.defaults.baseURL = `https://${env.get('NODE_DOCKER_HOST')}:${env.get('NODE_DOCKER_PORT')}/api/v1`;
 
 
+    //
+    // graphql client setup
+    //
+
+    const apoloClient = new ApolloClient({
+        link: httpLink,
+        cache: new InMemoryCache()
+    });
+
 
     //
     // bootstrap react app
@@ -23,7 +34,9 @@ bootstrap('mern-frontend-app', {attrs: []}, (node, applicationParams, env) => {
 
     createRoot(node).render(
         // <StrictMode>
-            <App />
+            <ApolloProvider client={apoloClient}>
+                <App />
+            </ApolloProvider>
         // </StrictMode>
     );
 

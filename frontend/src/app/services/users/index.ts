@@ -1,7 +1,18 @@
-import {UserType} from "../../index";
 import axios from "axios";
 
 
+export type UserType = {
+
+    name: string,
+    lastname: string,
+    jobTitle: string,
+    id: string,
+    createdAt: string,
+    country: string,
+    city: string,
+    avatar: string
+
+};
 /**
  *
  *

@@ -106,7 +106,7 @@ module.exports = env => {
 
                 logging: 'info',
             },
-            port: env.port
+            port: 8081
         }
     };
 
