@@ -8,14 +8,29 @@ type Query {
 
 type Mutation {
     createUser(data: CreateUserInput): User!
-    createProject(title: String!, author: ID): Project!
+    createProject(data: CreateProjectInput): Project!
 }
 
 input CreateUserInput {
     name: String!
-    email: String!
-    age: Int
+    lastname: String!
+    jobTitle: String!
+    country: String!
+    city: String!
+    avatar: String!
 }
+
+input CreateProjectInput {
+
+    name: String!
+    description: String!
+    technology: String!
+    price: Float!
+    owner: String!
+}
+
+
+
 
 type User {
     id: ID!

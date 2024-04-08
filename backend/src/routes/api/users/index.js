@@ -54,19 +54,19 @@ router.delete('/:id', async (request, response) => {
 
 router.get('/:id/projects', async (request, response) => {
 
-    const objectId = new mongoose.Types.ObjectId(request.params.id);  //.SchemaTypes.ObjectId(request.params.id);
+        const objectId = new mongoose.Types.ObjectId(request.params.id);  //.SchemaTypes.ObjectId(request.params.id);
 
-    try {
+        try {
 
-        let projects = await Project.find({owner: objectId}).exec();
+            let projects = await Project.find({owner: objectId}).exec();
 
-        response.json(projects);
+            response.json(projects);
 
-    } catch (ex) {
+        } catch (ex) {
 
-        response.status(500).send(ex.message);
+            response.status(500).send(ex.message);
 
-    }
+        }
 
 
 });

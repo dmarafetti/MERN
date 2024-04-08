@@ -40,7 +40,28 @@ const resolvers = {
 
         }
 
+    },
+
+    User: { // matches with User type
+
+            async projects(obj, args, context, info) {
+
+                return await Project.find({owner: obj._id}).exec();
+
+            }
+
+    },
+
+    Project: { // matches with Project type
+
+        async owner(obj, args, context, info) {
+
+            return await User.findById(obj.owner);
+
+        }
+
     }
+
 
 };
 
