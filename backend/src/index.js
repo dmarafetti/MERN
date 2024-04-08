@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const cors = require("cors");
 const mongoose = require('mongoose');
 const { createHandler } = require("graphql-http/lib/use/express");
 const {buildGraphQLSchema} = require('./graphql');
@@ -29,6 +30,18 @@ const {
     app.use(express.json());
 
 
+    // configure CORS
+
+    app.use(cors({
+
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        optionsSuccessStatus: 204
+
+    }));
+
+
     app.get('/', async (request, response) => {
 
       response.send('backend alive!');
@@ -42,9 +55,12 @@ const {
 
     // Serve the GraphiQL IDE.
     app.get("/playground", (_req, res) => {
-      res.type("html")
-      res.end(ruruHTML({ endpoint: "/graphql" }))
-    })
+
+        res.type("html");
+
+        res.end(ruruHTML({ endpoint: "/graphql" }));
+
+    });
 
     // API routing
 
