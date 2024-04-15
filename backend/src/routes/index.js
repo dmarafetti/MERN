@@ -1,6 +1,7 @@
 const express = require('express')
 const users = require('./api/users');
 const projects = require('./api/projects');
+const auth = require('./api/auth');
 
 const router = express.Router();
 
@@ -9,6 +10,9 @@ const router = express.Router();
 router.use('/users', users);
 
 router.use('/projects', projects);
+
+router.use('/auth', auth);
+
 
 
 

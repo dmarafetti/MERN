@@ -15,7 +15,9 @@
     "graphql-http" : "1.22.0",
     "ruru" : "2.0.0-beta.11",
     "@graphql-tools/load-files" : "7.0.0",
-    "@graphql-tools/schema" : "10.0.3"
+    "@graphql-tools/schema" : "10.0.3",
+    "jsonwebtoken" : "9.0.2",
+    "parse-bearer-token" : "1.0.1"
   },
   "devDependencies": {
     "nodemon": "3.1.0"
