@@ -6,6 +6,8 @@ import axios from "axios";
 import App from './app';
 import {ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client";
 import {httpLink} from './app/commons/apollo';
+import {Provider as ReduxProvider} from 'react-redux';
+import store from './app/store';
 
 
 bootstrap('mern-frontend-app', {attrs: []}, (node, applicationParams, env) => {
@@ -35,7 +37,9 @@ bootstrap('mern-frontend-app', {attrs: []}, (node, applicationParams, env) => {
     createRoot(node).render(
         // <StrictMode>
             <ApolloProvider client={apoloClient}>
-                <App />
+                <ReduxProvider store={store}>
+                    <App />
+                </ReduxProvider>
             </ApolloProvider>
         // </StrictMode>
     );

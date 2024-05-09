@@ -50,6 +50,10 @@ export default (): ReactElement => {
 
             setUsers(response.data);
 
+        }).catch((ex) => {
+
+            console.error(ex.message);
+
         });
 
         return () => {

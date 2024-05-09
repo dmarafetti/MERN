@@ -2,6 +2,9 @@ import React, {ReactElement} from "react";
 import {createHashRouter, createRoutesFromElements, Navigate, Outlet, Route, RouterProvider} from "react-router-dom";
 import Clients from "./containers/clients";
 import Magento from "./containers/magento";
+import Header from "./components/header";
+import Footer from "./components/footer";
+import Playground from "./containers/playground";
 
 
 /**
@@ -23,6 +26,8 @@ export default (): ReactElement => {
                     <Route path={'clients'} element={<Clients />} />
 
                     <Route path={'magento'} element={<Magento />} />
+
+                    <Route path={'playground'} element={<Playground />} />
 
                     {/* fallback redirect */}
 
@@ -53,11 +58,11 @@ const Layout = () : ReactElement => {
 
         <div>
 
-            <p>header</p>
+            <Header />
 
             <Outlet />
 
-            <p>footer</p>
+            <Footer />
 
         </div>
 

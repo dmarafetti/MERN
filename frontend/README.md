@@ -20,6 +20,14 @@ Same as 'watch' but with http server.
 $ npm run server 
 ```
 
+Run frontend app separately. A few env variables must be declared
+
+```sh 
+$ export UI_BUILD_MODE=development
+```
+
+
+
 
 
 ###  Distribute
